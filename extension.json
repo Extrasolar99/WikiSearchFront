@@ -65,6 +65,7 @@
     "WikiSearchFrontHooks": "includes/WikiSearchFrontHooks.php"
   },
   "Hooks": {
+    "WikiSearchApplyResultTranslations": "WikiSearchFront\\WikiSearchFrontHooks::onWikiSearchApplyResultTranslations",
     "WikiSearchOnLoadFrontend": "WikiSearchFront\\WikiSearchFrontHooks::onWikiSearchOnLoadFrontend"
   },
   "manifest_version": 2

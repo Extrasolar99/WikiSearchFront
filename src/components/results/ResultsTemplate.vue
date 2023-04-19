@@ -2,7 +2,7 @@
   <div
     class="wikisearch-wiki-template"
     :class="loading ? 'wikisearch-wiki-template--loading wikisearch-element--pending' : ''"
-    v-html="result"
+    v-html="html"
   />
 </template>
 
@@ -22,6 +22,9 @@ export default {
     };
   },
   computed: {
+    html() {
+      return this.$store.state.hits.mText || this.result;
+    },
     hits() {
       return this.$store.state.hits;
     },
@@ -69,11 +72,16 @@ export default {
   },
   watch: {
     hits() {
-      console.log('hits changed, render template');
+      if (this.$store.state.hits.mText) {
+        return;
+      }
       this.parseTemplate();
     },
   },
   mounted() {
+    if (this.$store.state.hits.mText) {
+      return;
+    }
     this.parseTemplate();
   },
   methods: {
